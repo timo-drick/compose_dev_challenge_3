@@ -15,8 +15,8 @@ Just implemented the design as fast as possible
 
 ## :camera_flash: Screenshots
 <!-- You can add more screenshots here if you like -->
-<img src="/results/start_light.png" width="260">&emsp;<img src="/results/login_light.png" width="260">&emsp;<img src="/results/screenshot_1.png" width="260">
-<img src="/results/start_dark.png" width="260">&emsp;<img src="/results/login_dark.png" width="260">&emsp;<img src="/results/screenshot_2.png" width="260">
+<img src="/results/start_light.png" width="260">&emsp;<img src="/results/login_light.png" width="260">&emsp;<img src="/results/screenshot_2.png" width="260">
+<img src="/results/start_dark.png" width="260">&emsp;<img src="/results/login_dark.png" width="260">&emsp;<img src="/results/screenshot_1.png" width="260">
 
 ## License
 ```
