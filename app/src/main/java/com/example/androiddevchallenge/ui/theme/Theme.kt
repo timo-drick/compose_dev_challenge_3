@@ -16,31 +16,54 @@
 package com.example.androiddevchallenge.ui.theme
 
 import androidx.compose.foundation.isSystemInDarkTheme
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.MaterialTheme
+import androidx.compose.material.Shapes
 import androidx.compose.material.darkColors
 import androidx.compose.material.lightColors
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.unit.dp
 
-private val DarkColorPalette = darkColors(
-    primary = purple200,
-    primaryVariant = purple700,
-    secondary = teal200
+val gray800 = Color(0xFF333333).copy(alpha = 0.8f)
+val gray900 = Color(0xFF333333)
+val rust600 = Color(0xFF886363)
+val rust300 = Color(0xFFE1AFAF)
+val taupe100 = Color(0xFFF0EAE2)
+val taupe800 = Color(0xFF655454)
+val white150 = Color.White.copy(alpha = 0.15f)
+val white800 = Color.White.copy(alpha = 0.80f)
+val white850 = Color.White.copy(alpha = 0.85f)
+
+val DarkColorPalette = darkColors(
+    primary = Color.White,
+    secondary = rust300,
+    background = gray900,
+    surface = white150,
+    onPrimary = gray900,
+    onSecondary = gray900,
+    onBackground = taupe100,
+    onSurface = white800
 )
 
-private val LightColorPalette = lightColors(
-    primary = purple500,
-    primaryVariant = purple700,
-    secondary = teal200
-
-        /* Other default colors to override
-    background = Color.White,
-    surface = Color.White,
+val LightColorPalette = lightColors(
+    primary = gray900,
+    secondary = rust600,
+    background = taupe100,
+    surface = white850,
     onPrimary = Color.White,
-    onSecondary = Color.Black,
-    onBackground = Color.Black,
-    onSurface = Color.Black,
-    */
+    onSecondary = Color.White,
+    onBackground = taupe800,
+    onSurface = gray800
 )
+
+val shapes = Shapes(
+    small = RoundedCornerShape(4.dp),
+    medium = RoundedCornerShape(16.dp),
+    large = RoundedCornerShape(0.dp)
+)
+
+val bottomNavigationElevation = 8.dp
 
 @Composable
 fun MyTheme(darkTheme: Boolean = isSystemInDarkTheme(), content: @Composable() () -> Unit) {
