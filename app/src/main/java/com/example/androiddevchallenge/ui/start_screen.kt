@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.example.androiddevchallenge
+package com.example.androiddevchallenge.ui
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -34,48 +34,65 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.example.androiddevchallenge.R
+
+@Preview("Light Theme", widthDp = 360, heightDp = 640)
+@Composable
+fun StartScreenLightPreview() {
+    MyTheme {
+        StartScreen(onContinue = {})
+    }
+}
+
+@Preview("Dark Theme", widthDp = 360, heightDp = 640)
+@Composable
+fun StartScreenDarkPreview() {
+    MyTheme(darkTheme = true) {
+        StartScreen(onContinue = {})
+    }
+}
 
 @Composable
 fun StartScreen(onContinue: () -> Unit) {
-    val background = painterResource(id = if (isSystemInDarkTheme()) R.drawable.ic_dark_welcome else R.drawable.ic_light_welcome)
+    val backgroundImage = painterResource(id = if (isSystemInDarkTheme()) R.drawable.ic_dark_welcome else R.drawable.ic_light_welcome)
     val logo = painterResource(id = if (isSystemInDarkTheme()) R.drawable.ic_dark_logo else R.drawable.ic_light_logo)
 
     Box(
         modifier = Modifier
             .fillMaxSize()
-            .background(MaterialTheme.colors.background)
+            .background(MaterialTheme.colors.background),
+        contentAlignment = Alignment.Center
     ) {
         Image(
-            background,
+            backgroundImage,
             "background",
             Modifier.fillMaxSize(),
             contentScale = ContentScale.FillBounds
         )
-        Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
-            Column(Modifier.padding(horizontal = 16.dp), horizontalAlignment = Alignment.CenterHorizontally) {
-                Image(logo, "mysoothe")
-                Spacer(Modifier.height(32.dp))
-                Button(
-                    onClick = onContinue,
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .height(72.dp),
-                    shape = MaterialTheme.shapes.medium
-                ) {
-                    Text(text = "SIGN UP")
-                }
-                Spacer(Modifier.height(8.dp))
-                Button(
-                    onClick = onContinue,
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .height(72.dp),
-                    shape = MaterialTheme.shapes.medium,
-                    colors = ButtonDefaults.buttonColors(MaterialTheme.colors.secondary)
-                ) {
-                    Text(text = "LOG IN")
-                }
+        Column(Modifier.padding(horizontal = 16.dp), horizontalAlignment = Alignment.CenterHorizontally) {
+            Image(logo, "mysoothe")
+            Spacer(Modifier.height(32.dp))
+            Button(
+                onClick = onContinue,
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .height(72.dp),
+                shape = MaterialTheme.shapes.medium
+            ) {
+                Text(text = "SIGN UP")
+            }
+            Spacer(Modifier.height(8.dp))
+            Button(
+                onClick = onContinue,
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .height(72.dp),
+                shape = MaterialTheme.shapes.medium,
+                colors = ButtonDefaults.buttonColors(MaterialTheme.colors.secondary)
+            ) {
+                Text(text = "LOG IN")
             }
         }
     }

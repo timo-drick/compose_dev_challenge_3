@@ -13,11 +13,10 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.example.androiddevchallenge
+package com.example.androiddevchallenge.ui
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.isSystemInDarkTheme
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
@@ -44,7 +43,25 @@ import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.text.withStyle
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.example.androiddevchallenge.R
+
+@Preview("Light Theme", widthDp = 360, heightDp = 640)
+@Composable
+fun LoginScreenLightPreview() {
+    MyTheme {
+        LoginScreen(onLogin = {})
+    }
+}
+
+@Preview("Dark Theme", widthDp = 360, heightDp = 640)
+@Composable
+fun LoginScreenDarkPreview() {
+    MyTheme(darkTheme = true) {
+        LoginScreen(onLogin = {})
+    }
+}
 
 @Composable
 fun LoginScreen(onLogin: () -> Unit) {
@@ -63,49 +80,47 @@ fun LoginScreen(onLogin: () -> Unit) {
             Modifier.fillMaxSize(),
             contentScale = ContentScale.FillBounds
         )
-        Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.TopCenter) {
-            Column(Modifier.padding(horizontal = 16.dp), horizontalAlignment = Alignment.CenterHorizontally) {
-                Text("LOG IN", Modifier.paddingFromBaseline(top = 200.dp), style = MaterialTheme.typography.h1)
-                Spacer(Modifier.height(32.dp))
-                TextField(
-                    value = email,
-                    modifier = Modifier.fillMaxWidth(),
-                    onValueChange = { email = it },
-                    placeholder = {
-                        Text("Email address")
-                    },
-                    colors = TextFieldDefaults.textFieldColors(backgroundColor = MaterialTheme.colors.surface)
-                )
-                Spacer(Modifier.height(8.dp))
-                TextField(
-                    value = password,
-                    modifier = Modifier.fillMaxWidth(),
-                    onValueChange = { password = it },
-                    placeholder = {
-                        Text("Password")
-                    },
-                    colors = TextFieldDefaults.textFieldColors(backgroundColor = MaterialTheme.colors.surface)
-                )
-                Spacer(Modifier.height(8.dp))
-                Button(
-                    onClick = onLogin,
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .height(72.dp),
-                    shape = MaterialTheme.shapes.medium
-                ) {
-                    Text(text = "LOG IN")
-                }
-                val text = remember {
-                    buildAnnotatedString {
-                        append("Don't have an account? ")
-                        withStyle(SpanStyle(textDecoration = TextDecoration.Underline)) {
-                            append("Sign up")
-                        }
+        Column(Modifier.padding(screenPadding), horizontalAlignment = Alignment.CenterHorizontally) {
+            Text("LOG IN", Modifier.paddingFromBaseline(top = 200.dp), style = MaterialTheme.typography.h1)
+            Spacer(Modifier.height(32.dp))
+            TextField(
+                value = email,
+                modifier = Modifier.fillMaxWidth(),
+                onValueChange = { email = it },
+                placeholder = {
+                    Text("Email address")
+                },
+                colors = TextFieldDefaults.textFieldColors(backgroundColor = MaterialTheme.colors.surface)
+            )
+            Spacer(Modifier.height(8.dp))
+            TextField(
+                value = password,
+                modifier = Modifier.fillMaxWidth(),
+                onValueChange = { password = it },
+                placeholder = {
+                    Text("Password")
+                },
+                colors = TextFieldDefaults.textFieldColors(backgroundColor = MaterialTheme.colors.surface)
+            )
+            Spacer(Modifier.height(8.dp))
+            Button(
+                onClick = onLogin,
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .height(72.dp),
+                shape = MaterialTheme.shapes.medium
+            ) {
+                Text(text = "LOG IN")
+            }
+            val text = remember {
+                buildAnnotatedString {
+                    append("Don't have an account? ")
+                    withStyle(SpanStyle(textDecoration = TextDecoration.Underline)) {
+                        append("Sign up")
                     }
                 }
-                Text(text, Modifier.paddingFromBaseline(32.dp))
             }
+            Text(text, Modifier.paddingFromBaseline(32.dp))
         }
     }
 }

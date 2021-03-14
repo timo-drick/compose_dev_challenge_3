@@ -6,7 +6,8 @@
 
 
 ## :scroll: Description
-<!--- Describe your app in one or two sentences -->
+Implemented mock design as accurate as i can.
+Simply flow from start screen -> login screen -> home screen
 
 
 ## :bulb: Motivation and Context

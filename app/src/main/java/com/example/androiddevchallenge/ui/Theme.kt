@@ -13,9 +13,10 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.example.androiddevchallenge.ui.theme
+package com.example.androiddevchallenge.ui
 
 import androidx.compose.foundation.isSystemInDarkTheme
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Shapes
@@ -24,6 +25,7 @@ import androidx.compose.material.lightColors
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
+import dev.chrisbanes.accompanist.insets.ProvideWindowInsets
 
 val gray800 = Color(0xFF333333).copy(alpha = 0.8f)
 val gray900 = Color(0xFF333333)
@@ -63,6 +65,8 @@ val shapes = Shapes(
     large = RoundedCornerShape(0.dp)
 )
 
+val screenPadding = PaddingValues(start = 16.dp, end = 16.dp)
+
 val bottomNavigationElevation = 8.dp
 
 @Composable
@@ -72,11 +76,12 @@ fun MyTheme(darkTheme: Boolean = isSystemInDarkTheme(), content: @Composable() (
     } else {
         LightColorPalette
     }
-
-    MaterialTheme(
-        colors = colors,
-        typography = typography,
-        shapes = shapes,
-        content = content
-    )
+    ProvideWindowInsets {
+        MaterialTheme(
+            colors = colors,
+            typography = typography,
+            shapes = shapes,
+            content = content
+        )
+    }
 }
