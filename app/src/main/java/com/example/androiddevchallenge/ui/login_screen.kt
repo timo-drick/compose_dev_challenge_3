@@ -81,8 +81,7 @@ fun LoginScreen(onLogin: () -> Unit) {
             contentScale = ContentScale.FillBounds
         )
         Column(Modifier.padding(screenPadding), horizontalAlignment = Alignment.CenterHorizontally) {
-            Text("LOG IN", Modifier.paddingFromBaseline(top = 200.dp), style = MaterialTheme.typography.h1)
-            Spacer(Modifier.height(32.dp))
+            Text("LOG IN", Modifier.paddingFromBaseline(top = 200.dp, bottom = 32.dp), style = MaterialTheme.typography.h1)
             TextField(
                 value = email,
                 modifier = Modifier.fillMaxWidth(),
