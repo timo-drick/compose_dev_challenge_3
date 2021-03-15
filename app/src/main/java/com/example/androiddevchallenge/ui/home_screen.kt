@@ -219,11 +219,10 @@ fun RoundRow(title: String, imageList: List<Images>) {
     Text(
         title,
         Modifier
-            .paddingFromBaseline(top = 40.dp)
+            .paddingFromBaseline(top = 40.dp, bottom = 8.dp)
             .padding(screenPadding),
         style = MaterialTheme.typography.h2
     )
-    Spacer(Modifier.height(8.dp))
     LazyRow(contentPadding = screenPadding, horizontalArrangement = Arrangement.spacedBy(8.dp)) {
         items(imageList) { image ->
             RoundItem(image)
