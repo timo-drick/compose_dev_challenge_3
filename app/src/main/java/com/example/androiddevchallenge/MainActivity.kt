@@ -19,11 +19,13 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.animation.Crossfade
+import androidx.compose.foundation.layout.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowCompat
@@ -56,9 +58,13 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun MyApp() {
 
-    var currentScreen by remember { mutableStateOf<Screen>(Screen.Login) }
+    var currentScreen by remember { mutableStateOf<Screen>(Screen.Start) }
 
-    Crossfade(targetState = currentScreen) { screen ->
+    Crossfade(
+        modifier = Modifier.fillMaxSize(),
+        targetState = currentScreen,
+        label = "Main navigation"
+    ) { screen ->
         when (screen) {
             Screen.Start -> StartScreen(onContinue = { currentScreen = Screen.Login })
             Screen.Login -> LoginScreen(onLogin = { currentScreen = Screen.Home })

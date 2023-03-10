@@ -25,7 +25,6 @@ import androidx.compose.material.lightColors
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
-import dev.chrisbanes.accompanist.insets.ProvideWindowInsets
 
 val gray800 = Color(0xFF333333).copy(alpha = 0.8f)
 val gray900 = Color(0xFF333333)
@@ -76,12 +75,10 @@ fun MyTheme(darkTheme: Boolean = isSystemInDarkTheme(), content: @Composable() (
     } else {
         LightColorPalette
     }
-    ProvideWindowInsets {
-        MaterialTheme(
-            colors = colors,
-            typography = typography,
-            shapes = shapes,
-            content = content
-        )
-    }
+    MaterialTheme(
+        colors = colors,
+        typography = typography,
+        shapes = shapes,
+        content = content
+    )
 }
